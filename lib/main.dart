@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto/src/Interfaces/login/components/modalLoginWidget.dart';
 import 'package:projeto/src/Interfaces/login/web/loginWeb.dart';
-import 'package:projeto/src/Interfaces/recovery/componets/formRecoveryWidget.dart';
-import 'package:projeto/src/Interfaces/recovery/componets/modalRecoveryWidget.dart';
 import 'package:projeto/src/Interfaces/recovery/web/recoveryWeb.dart';
+import 'package:projeto/src/Shared/components/sideMenuPage.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -22,7 +20,7 @@ class MyApp extends StatelessWidget {
 final routesConfig = {
   "/login": (context) => const LoginWeb(),
   "/recovery": (context) => const RecoveryWeb(),
-  "/home": (context) => const Center(child: Text("Home!!!")),
+  "/home": (context) => const SideMenuPage(),
 };
 
 void main(List<String> args) {

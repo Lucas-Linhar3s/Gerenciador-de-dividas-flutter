@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class FormRecovery extends StatefulWidget {
   const FormRecovery({super.key});
@@ -10,8 +11,12 @@ class FormRecovery extends StatefulWidget {
 final _formKey = GlobalKey<FormState>();
 
 class _FormRecoveryState extends State<FormRecovery> {
-  TextEditingController _controllerEmail = TextEditingController();
-  TextEditingController _controllerSenha = TextEditingController();
+  final TextEditingController _controllerEmail = TextEditingController();
+  final TextEditingController _controllerSenha = TextEditingController();
+
+  final _celularMaskController = MaskTextInputFormatter(
+    mask: "(0##) #####-####",
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -53,8 +58,8 @@ class _FormRecoveryState extends State<FormRecovery> {
             Container(
               width: 500.0,
               child: TextFormField(
-                controller: _controllerSenha,
-                obscureText: true,
+                inputFormatters: [_celularMaskController],
+                // controller: _controllerSenha,
                 textInputAction: TextInputAction.next,
                 validator: (value) {
                   if (value == null || value.isEmpty) {

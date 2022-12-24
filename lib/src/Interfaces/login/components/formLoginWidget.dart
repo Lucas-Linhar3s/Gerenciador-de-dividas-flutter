@@ -1,5 +1,10 @@
+// ignore_for_file: file_names
+
+import 'dart:async';
+
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class CustomForm extends StatefulWidget {
   const CustomForm({super.key});
@@ -8,27 +13,26 @@ class CustomForm extends StatefulWidget {
   State<CustomForm> createState() => _CustomFormState();
 }
 
-final _formKey = GlobalKey<FormState>();
+TextEditingController _controllerEmail = TextEditingController();
+TextEditingController _controllerSenha = TextEditingController();
 
 class _CustomFormState extends State<CustomForm> {
   var _hover = false;
-
-  TextEditingController _controllerEmail = TextEditingController();
-  TextEditingController _controllerSenha = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   void _onTap() {
     Navigator.of(context).pushReplacementNamed("/recovery");
   }
 
   late final _recogniser = TapGestureRecognizer()..onTap = _onTap;
-
+  bool isVisiblePassword = true;
   @override
   Widget build(BuildContext context) {
     return Form(
         key: _formKey,
         child: Column(
           children: <Widget>[
-            Container(
+            SizedBox(
                 width: 500.0,
                 child: TextFormField(
                   controller: _controllerEmail,
@@ -65,7 +69,7 @@ class _CustomFormState extends State<CustomForm> {
                 children: [
                   TextFormField(
                     controller: _controllerSenha,
-                    obscureText: true,
+                    obscureText: isVisiblePassword,
                     textInputAction: TextInputAction.next,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -80,7 +84,15 @@ class _CustomFormState extends State<CustomForm> {
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(06.0),
                       ),
-                      suffixIcon: const Icon(Icons.remove_red_eye),
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              isVisiblePassword = !isVisiblePassword;
+                            });
+                          },
+                          icon: isVisiblePassword
+                              ? Icon(Icons.remove_red_eye_rounded)
+                              : Icon(Icons.remove_red_eye_outlined)),
                       labelText: "Senha",
                       enabled: true,
                     ),
@@ -132,16 +144,21 @@ class _CustomFormState extends State<CustomForm> {
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
-                          content: Text('Carregando...'),
-                          backgroundColor: Colors.green,
+                          // content: Text('Carregando...'),
+                          content: LinearProgressIndicator(color: Colors.blue),
+                          // backgroundColor: Colors.white,
                           elevation: 5.0,
                           duration: Duration(milliseconds: 5000),
                         ),
                       );
                       if (_controllerEmail.text == "Lucas@gmail.com" &&
                           _controllerSenha.text == "123456789") {
-                        // Navigator.pushReplacementNamed(context, "/teste");
-                        Navigator.of(context).pushReplacementNamed("/home");
+                        // // Navigator.pushReplacementNamed(context, "/teste");
+                        // Navigator.of(context).pushReplacementNamed("/home");
+                        // Navigator.of(context).pushReplacementNamed("/home");
+                        Timer(Duration(milliseconds: 4000), () {
+                          Navigator.of(context).pushReplacementNamed("/home");
+                        });
                       }
                     }
                   },
