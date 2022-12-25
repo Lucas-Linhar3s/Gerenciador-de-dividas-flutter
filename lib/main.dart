@@ -12,7 +12,6 @@ class MyApp extends StatelessWidget {
       title: "Projeto",
       initialRoute: "/login",
       routes: routesConfig,
-      // routes: routesConfig,
     );
   }
 }

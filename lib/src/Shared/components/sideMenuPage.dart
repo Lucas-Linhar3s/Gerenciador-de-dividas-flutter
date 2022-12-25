@@ -10,158 +10,188 @@ class SideMenuPage extends StatefulWidget {
 }
 
 class _SideMenuPageState extends State<SideMenuPage> {
+  final PageController _controller = PageController(initialPage: 0);
   bool focus = false;
   @override
   Widget build(BuildContext context) {
-    return DecoratedBox(
-        decoration: const BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Color.fromARGB(153, 0, 0, 0),
-              blurRadius: 10,
-              spreadRadius: 5,
+    return Row(
+      children: [
+        DecoratedBox(
+            decoration: const BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromARGB(153, 0, 0, 0),
+                  blurRadius: 10,
+                  spreadRadius: 5,
+                ),
+              ],
             ),
-          ],
-        ),
-        child: Container(
-          width: 300,
-          height: double.infinity,
-          // color: Color.fromARGB(255, 255, 254, 254),
-          decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
-          ),
-          child: Column(
-            children: [
-              Container(
-                alignment: AlignmentDirectional.topCenter,
-                child: Image.network(
-                  'https://upload.wikimedia.org/wikipedia/commons/9/91/Logo_SiteW.jpg',
-                  width: 140.0,
-                  height: 110.0,
-                ),
+            child: Container(
+              width: 300,
+              height: double.infinity,
+              // color: Color.fromARGB(255, 255, 254, 254),
+              decoration: const BoxDecoration(
+                color: Color.fromARGB(255, 255, 255, 255),
               ),
-              const SizedBox(
-                // width: 20,
-                height: 20,
-              ),
-              Material(
-                child: ListTile(
-                  hoverColor: const Color.fromARGB(181, 98, 175, 239),
-                  enabled: true,
-                  focusColor: Color.fromARGB(181, 98, 175, 239),
-                  iconColor: Colors.blueGrey,
-                  textColor: Colors.blueGrey,
-                  leading: const Icon(Icons.dashboard),
-                  title: const Text(
-                    'DASHBOARD',
-                    style: TextStyle(
-                      fontSize: 13,
+              child: Column(
+                children: [
+                  Container(
+                    alignment: AlignmentDirectional.topCenter,
+                    child: Image.network(
+                      'https://upload.wikimedia.org/wikipedia/commons/9/91/Logo_SiteW.jpg',
+                      width: 140.0,
+                      height: 110.0,
                     ),
                   ),
-                  onTap: () {
-                    setState(() {
-                      focus = !focus;
-                    });
-                  },
-                ),
-              ),
-              const SizedBox(
-                // width: 20,
-                height: 11,
-              ),
-              Material(
-                child: ListTile(
-                  hoverColor: Color.fromARGB(181, 98, 175, 239),
-                  iconColor: Colors.blueGrey,
-                  textColor: Colors.blueGrey,
-                  leading: const Icon(Icons.person),
-                  title: const Text(
-                    'MEU PERFIL',
-                    style: TextStyle(
-                      fontSize: 13,
+                  const Divider(
+                    color: Colors.black,
+                    height: 0.3,
+                  ),
+                  const SizedBox(
+                    // width: 20,
+                    height: 20,
+                  ),
+                  Material(
+                    child: ListTile(
+                      hoverColor: Color.fromARGB(181, 98, 175, 239),
+                      iconColor: Colors.blueGrey,
+                      textColor: Colors.blueGrey,
+                      leading: const Icon(Icons.dashboard),
+                      title: const Text(
+                        'DASHBOARD',
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      onTap: () {
+                        setState(() {
+                          focus = !focus;
+                        });
+                        _controller.jumpToPage(0);
+                      },
                     ),
                   ),
-                  onTap: () {},
-                ),
-              ),
-              const SizedBox(
-                // width: 20,
-                height: 11,
-              ),
-              Material(
-                child: ListTile(
-                  hoverColor: Color.fromARGB(181, 98, 175, 239),
-                  iconColor: Colors.blueGrey,
-                  textColor: Colors.blueGrey,
-                  leading: const Icon(Icons.blinds_closed_sharp),
-                  title: const Text(
-                    'MINHAS DIVIDAS',
-                    style: TextStyle(
-                      fontSize: 13,
+                  const SizedBox(
+                    // width: 20,
+                    height: 11,
+                  ),
+                  Material(
+                    child: ListTile(
+                      hoverColor: Color.fromARGB(181, 98, 175, 239),
+                      iconColor: Colors.blueGrey,
+                      textColor: Colors.blueGrey,
+                      leading: const Icon(Icons.person),
+                      title: const Text(
+                        'MEU PERFIL',
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      onTap: () {
+                        _controller.jumpToPage(1);
+                      },
                     ),
                   ),
-                  onTap: () {},
-                ),
-              ),
-              const SizedBox(
-                // width: 20,
-                height: 11,
-              ),
-              Material(
-                child: ListTile(
-                  hoverColor: Color.fromARGB(181, 98, 175, 239),
-                  iconColor: Colors.blueGrey,
-                  textColor: Colors.blueGrey,
-                  leading: const Icon(Icons.fiber_new_outlined),
-                  title: const Text(
-                    'NOVA DIVIDA',
-                    style: TextStyle(
-                      fontSize: 13,
+                  const SizedBox(
+                    // width: 20,
+                    height: 11,
+                  ),
+                  Material(
+                    child: ListTile(
+                      hoverColor: Color.fromARGB(181, 98, 175, 239),
+                      iconColor: Colors.blueGrey,
+                      textColor: Colors.blueGrey,
+                      leading: const Icon(Icons.blinds_closed_sharp),
+                      title: const Text(
+                        'MINHAS DIVIDAS',
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      onTap: () {
+                        _controller.jumpToPage(2);
+                      },
                     ),
                   ),
-                  onTap: () {},
-                ),
-              ),
-              const SizedBox(
-                // width: 20,
-                height: 11,
-              ),
-              Material(
-                child: ListTile(
-                  hoverColor: Color.fromARGB(181, 98, 175, 239),
-                  iconColor: Colors.blueGrey,
-                  textColor: Colors.blueGrey,
-                  leading: const Icon(Icons.help_outline),
-                  title: const Text(
-                    'AJUDA E SUPORTE',
-                    style: TextStyle(
-                      fontSize: 13,
+                  const SizedBox(
+                    // width: 20,
+                    height: 11,
+                  ),
+                  Material(
+                    child: ListTile(
+                      hoverColor: Color.fromARGB(181, 98, 175, 239),
+                      iconColor: Colors.blueGrey,
+                      textColor: Colors.blueGrey,
+                      leading: const Icon(Icons.add),
+                      title: const Text(
+                        'NOVA DIVIDA',
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      onTap: () {},
                     ),
                   ),
-                  onTap: () {},
-                ),
-              ),
-              const SizedBox(
-                // width: 20,
-                height: 11,
-              ),
-              Material(
-                child: ListTile(
-                  hoverColor: Color.fromARGB(181, 98, 175, 239),
-                  iconColor: Colors.blueGrey,
-                  textColor: Colors.blueGrey,
-                  leading: const Icon(Icons.exit_to_app),
-                  title: const Text(
-                    'SAIR',
-                    style: TextStyle(
-                      fontSize: 13,
+                  const SizedBox(
+                    // width: 20,
+                    height: 11,
+                  ),
+                  Material(
+                    child: ListTile(
+                      hoverColor: Color.fromARGB(181, 98, 175, 239),
+                      iconColor: Colors.blueGrey,
+                      textColor: Colors.blueGrey,
+                      leading: const Icon(Icons.help_outline),
+                      title: const Text(
+                        'AJUDA E SUPORTE',
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      onTap: () {},
                     ),
                   ),
-                  onTap: () {},
-                ),
+                  Divider(),
+                  const SizedBox(
+                    // width: 20,
+                    height: 11,
+                  ),
+                  Material(
+                    child: ListTile(
+                      hoverColor: Color.fromARGB(181, 98, 175, 239),
+                      iconColor: Colors.blueGrey,
+                      textColor: Colors.blueGrey,
+                      leading: const Icon(Icons.exit_to_app),
+                      title: const Text(
+                        'SAIR',
+                        style: TextStyle(
+                          fontSize: 13,
+                        ),
+                      ),
+                      onTap: () {},
+                    ),
+                  ),
+                ],
+              ),
+            )),
+        Container(
+          width: MediaQuery.of(context).size.width - 300,
+          child: PageView(
+            children: <Widget>[
+              Scaffold(
+                body: Center(child: Text("Dachboard")),
+              ),
+              Scaffold(
+                body: Center(child: Text("Meu Perfil")),
+              ),
+              Scaffold(
+                body: Center(child: Text("Minhas Dividas")),
               ),
             ],
+            controller: _controller,
           ),
-        ));
+        )
+      ],
+    );
   }
 }
