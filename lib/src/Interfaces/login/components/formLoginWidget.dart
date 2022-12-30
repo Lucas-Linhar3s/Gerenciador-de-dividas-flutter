@@ -151,16 +151,25 @@ class _CustomFormState extends State<CustomForm> {
                           duration: Duration(milliseconds: 5000),
                         ),
                       );
-                      if (_controllerEmail.text == "Lucas@gmail.com" &&
-                          _controllerSenha.text == "123456789") {
-                        // // Navigator.pushReplacementNamed(context, "/teste");
-                        // Navigator.of(context).pushReplacementNamed("/home");
-                        // Navigator.of(context).pushReplacementNamed("/home");
-                        Timer(Duration(milliseconds: 4000), () {
-                          Navigator.of(context).pushReplacementNamed("/home");
-                        });
-                      }
                     }
+                    if (_controllerEmail.text == "Lucas@gmail.com" &&
+                        _controllerSenha.text == "123456789") {
+                      // // Navigator.pushReplacementNamed(context, "/teste");
+                      // Navigator.of(context).pushReplacementNamed("/home");
+                      // Navigator.of(context).pushReplacementNamed("/home");
+                      Timer(Duration(milliseconds: 4000), () {
+                        Navigator.of(context).pushReplacementNamed("/home");
+                      });
+                    } else
+                      (ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Error ao tentar realizar login'),
+                          // content: LinearProgressIndicator(color: Colors.blue),
+                          // backgroundColor: Colors.white,
+                          elevation: 5.0,
+                          duration: Duration(milliseconds: 5000),
+                        ),
+                      ));
                   },
                   child: Text("Entrar"),
                   style: ButtonStyle(

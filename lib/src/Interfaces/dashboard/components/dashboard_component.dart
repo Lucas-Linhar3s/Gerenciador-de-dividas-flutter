@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:projeto/src/Interfaces/grafico/charts.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -40,30 +41,23 @@ class _DashboardState extends State<Dashboard> {
                 Flexible(
                   child: Card(
                     elevation: 10,
-                    // borderOnForeground: false,
-                    child: DecoratedBox(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0), //<-- SEE HERE
+                    ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 160,
+                      // color: Colors.white,
+                      child: Text(
+                        "GRUPOS",
+                        textAlign: TextAlign.center,
+                      ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200.0),
-                        color: Colors.white,
-                        border: Border(
-                          left: BorderSide(
-                            // color: Colors.green,
-                            width: 300,
-                          ),
-                        ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       // color: Color.fromARGB(153, 0, 0, 0),
-                        //       // blurRadius: 0,
-                        //       // spreadRadius: 0,
-                        //       ),
-                        // ],
-                      ),
-                      child: Container(
-                        width: 350,
-                        height: 160,
-                        color: Colors.white,
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                 ),
@@ -73,30 +67,23 @@ class _DashboardState extends State<Dashboard> {
                 Flexible(
                   child: Card(
                     elevation: 10,
-                    // borderOnForeground: false,
-                    child: DecoratedBox(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0), //<-- SEE HERE
+                    ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 160,
+                      // color: Colors.white,
+                      child: Text(
+                        "AMIGOS",
+                        textAlign: TextAlign.center,
+                      ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200.0),
-                        color: Colors.white,
-                        border: Border(
-                          left: BorderSide(
-                            // color: Colors.green,
-                            width: 300,
-                          ),
-                        ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       // color: Color.fromARGB(153, 0, 0, 0),
-                        //       // blurRadius: 0,
-                        //       // spreadRadius: 0,
-                        //       ),
-                        // ],
-                      ),
-                      child: Container(
-                        width: 350,
-                        height: 160,
-                        color: Colors.white,
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                 ),
@@ -106,32 +93,28 @@ class _DashboardState extends State<Dashboard> {
                 Flexible(
                   child: Card(
                     elevation: 10,
-                    // borderOnForeground: false,
-                    child: DecoratedBox(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0), //<-- SEE HERE
+                    ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 160,
+                      // color: Colors.white,
+                      child: Text(
+                        "VALOR",
+                        textAlign: TextAlign.center,
+                      ),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200.0),
-                        color: Colors.white,
-                        border: Border(
-                          left: BorderSide(
-                            // color: Colors.green,
-                            width: 400,
-                          ),
-                        ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       // color: Color.fromARGB(153, 0, 0, 0),
-                        //       // blurRadius: 0,
-                        //       // spreadRadius: 0,
-                        //       ),
-                        // ],
-                      ),
-                      child: Container(
-                        width: 350,
-                        height: 160,
-                        color: Colors.white,
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
+                ),
+                const SizedBox(
+                  width: 20.0,
                 ),
               ],
             ),
@@ -146,37 +129,28 @@ class _DashboardState extends State<Dashboard> {
                 Flexible(
                   child: Card(
                     elevation: 10,
-                    // borderOnForeground: false,
-                    child: DecoratedBox(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Colors.transparent,
+                      ),
+                      borderRadius: BorderRadius.circular(10.0), //<-- SEE HERE
+                    ),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 400,
+                      // color: Colors.white,
+                      child: Grafico(),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(200.0),
-                        color: Colors.white,
-                        border: Border(
-                          left: BorderSide(
-                            // color: Colors.green,
-                            width: 400,
-                          ),
-                        ),
-                        // boxShadow: [
-                        //   BoxShadow(
-                        //       // color: Color.fromARGB(153, 0, 0, 0),
-                        //       // blurRadius: 0,
-                        //       // spreadRadius: 0,
-                        //       ),
-                        // ],
-                      ),
-                      child: Container(
-                        // padding: EdgeInsets.all(40),
-                        alignment: AlignmentDirectional.centerStart,
-                        width: 1165,
-                        height: 400,
-                        color: Colors.white,
-                      ),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5)),
                     ),
                   ),
                 ),
+                const SizedBox(
+                  width: 20,
+                ),
               ],
-            )
+            ),
           ],
         ));
   }
